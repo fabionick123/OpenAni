@@ -62,5 +62,7 @@ OpenAni es una aplicación móvil de código abierto diseñada para los amantes 
 
 ## Enlaces del Proyecto
 
-* [Documentación](https://raw.githubusercontent.com/astememe/OpenAni/master/OpenAni.pdf)
-* [Figma](https://www.figma.com/design/Ub5aHLaY1a0UbzFBwfhsNm/OpenAni?node-id=0-1&t=wGV4od2cESe0WhaK-1)
+<div align="center">
+[Documentación](https://raw.githubusercontent.com/astememe/OpenAni/master/OpenAni.pdf)
+[Figma](https://www.figma.com/design/Ub5aHLaY1a0UbzFBwfhsNm/OpenAni?node-id=0-1&t=wGV4od2cESe0WhaK-1)
+</div>
