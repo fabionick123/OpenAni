@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="azul_header">#48457C</color>
+    <color name="amarillo_favorito">#E0D222</color>
+    <color name="naranja_descargar">#FF8400</color>
+    <color name="amarillo_comentarios">#EEAD4D</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gallery">#F0F0F0</color>
-    <color name="martinique">#32304B</color>
-    <color name="haiti">#141237</color>
-    <color name="dark_haiti">#09081D</color>
-    <color name="purple_dark_haiti">#16081C</color>
+    <color name="black">#000000</color>
 </resources>
