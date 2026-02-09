@@ -78,8 +78,6 @@
                 >
 
             </TextView>
-
-
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -176,26 +174,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-                    <include layout="@layout/anime_card_torrent"/>
-
-
-                </LinearLayout>
-
+                <include layout="@layout/anime_card_torrent"/>
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
