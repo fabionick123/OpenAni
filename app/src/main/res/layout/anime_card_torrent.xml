@@ -135,7 +135,7 @@
                         android:layout_marginTop="10dp"
                         >
                         <ImageButton
-                            android:id="imagebutton_download"
+                            android:id="@+id/imagebutton_download"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="-4dp"
@@ -151,7 +151,7 @@
 
                         </ImageButton>
                         <TextView
-                            android:id="texto_download"
+                            app:id="@id/textview_download"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Download"
