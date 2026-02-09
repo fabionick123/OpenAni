@@ -78,8 +78,6 @@
                 >
 
             </TextView>
-
-
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,7 +175,6 @@
                 android:orientation="vertical">
 
                 <include layout="@layout/anime_card_torrent"/>
-
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
