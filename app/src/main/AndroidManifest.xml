@@ -14,13 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenAni">
         <activity
-            android:name=".activity_register_view"
-            android:exported="false" />
+            android:name=".MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.OpenAni" />
         <activity
-            android:name=".AccountView"
-            android:exported="true"></activity>
-        <activity
-            android:name=".TorrentView"
+            android:name=".LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +28,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainManga"
+            android:name=".AccountView"
             android:exported="true"></activity>
+        <activity
+            android:name=".TorrentView"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainManga"
+            android:exported="false"></activity>
         <activity
             android:name=".MainAnime"
             android:exported="true"></activity>
