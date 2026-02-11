@@ -67,7 +67,7 @@
                 android:layout_width="52dp"
                 android:layout_height="54dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/side_nav_icon"
+                android:src="@drawable/flecha_hacia_atras"
                 app:tint="@color/white">
 
             </ImageView>
@@ -109,6 +109,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
                     >
 
                     <io.woong.shapedimageview.CircleImageView
@@ -126,16 +127,16 @@
 
                     <io.woong.shapedimageview.CircleImageView
                         android:id="@+id/cambiarfotoperfil"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         app:border_size="1dp"
-                        android:alpha="0.5"
-                        app:border_color="@color/white"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
                         android:layout_gravity="center"
                         />
 
                     <ImageView
-                        android:layout_width="35dp"
+                        android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/camara_icono"
                         android:tint="@color/white"
@@ -420,7 +421,9 @@
 
                             </LinearLayout>
 
+
                         </androidx.cardview.widget.CardView>
+
 
                     </LinearLayout>
 
@@ -485,6 +488,8 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
+
+
 
             </LinearLayout>
 
