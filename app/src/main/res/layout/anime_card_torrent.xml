@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
 <androidx.cardview.widget.CardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="20dp"
     android:layout_marginHorizontal="10dp"
@@ -20,7 +17,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/fondo_boton"
         app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="10dp"
         >
@@ -35,10 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/white"
-                android:layout_margin="3.5dp"
                 >
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,11 +119,9 @@
 
                     </LinearLayout>
                     <androidx.cardview.widget.CardView
-
                         android:layout_width="250dp"
                         android:layout_height="65dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/roundedbutton"
                         android:backgroundTint="@color/black"
                         app:cardCornerRadius="5dp"
                         android:layout_marginTop="10dp"
@@ -141,15 +132,14 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="-4dp"
                             android:layout_marginBottom="-4dp"
-                            android:layout_marginLeft="-2dp"
-                            android:layout_marginRight="-2dp"
+                            android:layout_marginLeft="-3dp"
+                            android:layout_marginRight="-3dp"
                             android:padding="0dp"
                             android:src="@drawable/fondo_boton"
                             android:scaleType="centerCrop"
                             app:tint="@color/black"
                             android:backgroundTint="@color/naranja_descargar"
                             >
-
                         </ImageButton>
                         <TextView
                             android:layout_width="match_parent"
@@ -162,19 +152,6 @@
                             />
                     </androidx.cardview.widget.CardView>
 
-
-
-                    <!--            <ImageButton-->
-                    <!--                android:layout_width="250dp"-->
-                    <!--                android:layout_height="65dp"-->
-                    <!--                android:layout_gravity="center"-->
-                    <!--                -->
-                    <!--                android:backgroundTint="@color/naranja_descargar"-->
-                    <!--                android:src="@drawable/perfil_preview_fondo"-->
-                    <!--                android:scaleType="centerCrop"-->
-                    <!--                android:adjustViewBounds="true"-->
-                    <!--                android:padding="1dp"-->
-                    <!--                />-->
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -269,11 +246,5 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
-
     </androidx.cardview.widget.CardView>
-
-
-
 </androidx.cardview.widget.CardView>
