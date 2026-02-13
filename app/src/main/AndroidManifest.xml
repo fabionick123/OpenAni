@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".Ventanas.MainAnime"
+            android:name=".Ventanas.Adaptador_Evento.MainAnime"
             android:exported="false">
         </activity>
 
