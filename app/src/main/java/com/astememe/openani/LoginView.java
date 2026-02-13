@@ -42,7 +42,7 @@ public class LoginView extends AppCompatActivity {
         button_login = findViewById(R.id.login);
 
         button_login.setOnClickListener(v -> login());
-        TextView loginRegistrarse = findViewById(R.id.registrarse);
+        ConstraintLayout loginRegistrarse = findViewById(R.id.registrarse);
         loginRegistrarse.setOnClickListener(v -> {
             Intent intent = new Intent(LoginView.this, activity_register_view.class);
             startActivity(intent);
