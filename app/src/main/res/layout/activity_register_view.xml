@@ -193,7 +193,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/nombreusuario_register"
+                                            android:id="@+id/nombreusuario_registro"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -281,7 +281,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/correo_register"
+                                            android:id="@+id/correo_registro"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -376,7 +376,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/contrasena_register"
+                                            android:id="@+id/contrasena_registro"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -467,7 +467,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/confirmar_contrasena_register"
+                                            android:id="@+id/confirmar_contrasena_registro"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -538,8 +538,9 @@
                     android:layout_height="wrap_content"
                     android:text="Already have an account?"
                     android:layout_marginHorizontal="30dp"
-                    android:textSize="17dp"
-                    android:fontFamily="@font/zud"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/share_bold"
                 />
 
             </LinearLayout>
