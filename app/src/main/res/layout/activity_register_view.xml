@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountView">
+    tools:context=".activity_register_view">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,9 +25,7 @@
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:alpha="0.2"
-            >
-
-        </ImageView>
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -42,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Account"
+                android:text="Register"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:fontFamily="@font/share_bold"
@@ -50,11 +48,9 @@
                 >
 
             </TextView>
-
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/botonmenulateral"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -77,34 +73,7 @@
             </ImageView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/botonestrella"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-
-            <ImageView
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:id="@+id/estrella"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="4dp"
-                android:src="@drawable/estrella_favorita_icono"
-                app:tint="@color/amarillo_favorito"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:id="@+id/body"
@@ -139,36 +108,15 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:layout_marginTop="-40dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
                     >
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/burbuja_descripcion"
-
-                        >
-
-                    </ImageView>
-
-                    <TextView
-                        android:id="@+id/descripcion"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="25dp"
-                        android:text="Me gusta el pito"
-                        android:textAlignment="center"
-                        >
-
-                    </TextView>
 
                     <io.woong.shapedimageview.CircleImageView
                         android:id="@+id/fotoperfil"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/spiderman"
+                        android:src="@drawable/foto_perfil_default"
                         android:padding="3dp"
                         app:border_size="2dp"
                         app:border_color="@color/black"
@@ -179,28 +127,21 @@
 
                     <io.woong.shapedimageview.CircleImageView
                         android:id="@+id/cambiarfotoperfil"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_gravity="bottom|center"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         app:border_size="1dp"
-                        app:border_color="@color/white"
-                        >
-
-
-                    </io.woong.shapedimageview.CircleImageView>
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center"
+                        />
 
                     <ImageView
-                        android:layout_marginLeft="40dp"
-                        android:layout_width="35dp"
+                        android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/camara_icono" android:tint="@color/white"
-                        android:layout_gravity="bottom|center"
-                        >
-
-
-                    </ImageView>
-
+                        android:src="@drawable/camara_icono"
+                        android:tint="@color/white"
+                        android:layout_gravity="center"
+                        />
                 </FrameLayout>
 
                 <LinearLayout
@@ -226,8 +167,6 @@
                             android:fontFamily="@font/zud"
                             android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:layout_marginBottom="5dp"
-
                             >
 
                         </TextView>
@@ -278,7 +217,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/nombreusuario"
+                                            android:id="@+id/nombreusuario_register"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -318,8 +257,6 @@
                             android:layout_marginHorizontal="40dp"
                             android:fontFamily="@font/zud"
                             android:textSize="20sp"
-                            android:layout_marginBottom="5dp"
-
                             >
 
                         </TextView>
@@ -343,12 +280,10 @@
                                 >
 
                                 <ImageView
-                                    android:layout_marginVertical="5dp"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="68dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="4"
-                                    android:src="@drawable/correo_icono"
-                                    >
+                                    android:layout_marginVertical="5dp"
+                                    android:src="@drawable/correo_icono">
 
                                 </ImageView>
 
@@ -370,7 +305,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/correo"
+                                            android:id="@+id/correo_register"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -407,6 +342,7 @@
 
 
                         <TextView
+
                             android:textColor="@color/black"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -414,8 +350,6 @@
                             android:layout_marginHorizontal="40dp"
                             android:fontFamily="@font/zud"
                             android:textSize="20sp"
-                            android:layout_marginBottom="5dp"
-
                             >
 
                         </TextView>
@@ -466,7 +400,7 @@
                                         >
 
                                         <EditText
-                                            android:id="@+id/contrasena"
+                                            android:id="@+id/contrasena_register"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:backgroundTint="@color/white"
@@ -486,7 +420,103 @@
 
                             </LinearLayout>
 
+
                         </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        >
+
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Confirm password"
+                            android:layout_marginHorizontal="40dp"
+                            android:fontFamily="@font/zud"
+                            android:textSize="20sp"
+                            >
+
+                        </TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:backgroundTint="@color/black"
+                            android:layout_marginHorizontal="40dp"
+                            app:cardCornerRadius="10dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_margin="2dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/roundedbutton"
+                                android:backgroundTint="@color/amarillo_comentarios"
+                                >
+
+                                <ImageView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    android:src="@drawable/contraena_icono"
+                                    >
+
+                                </ImageView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="10dp"
+                                    android:backgroundTint="@color/black"
+                                    >
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="2dp"
+                                        app:cardCornerRadius="10dp"
+                                        >
+
+                                        <EditText
+                                            android:id="@+id/confirmar_contrasena_register"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@color/white"
+                                            android:layout_marginHorizontal="10dp"
+                                            android:hint="Username"
+                                            android:textColor="@color/black"
+                                            android:fontFamily="@font/share"
+                                            android:textSize="20sp"
+                                            >
+
+
+                                        </EditText>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
 
                     </LinearLayout>
 
@@ -508,7 +538,7 @@
                         android:id="@+id/guardarcambios"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginHorizontal="10dp"
                         app:cardCornerRadius="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/roundedbutton"
@@ -521,36 +551,15 @@
                             android:textColor="@color/white"
                             android:text="Save Changes"
                             android:gravity="center"
-                            android:textSize="20sp"
-                            >
-
-                        </TextView>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/reset"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:cardCornerRadius="10dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/roundedbutton"
-
-                        >
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/zud_bold"
-                            android:textColor="@color/white"
-                            android:text="Reset"
-                            android:gravity="center"
-                            android:textSize="20sp"
+                            android:textSize="25sp"
                             >
 
                         </TextView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
+
+
 
             </LinearLayout>
 
