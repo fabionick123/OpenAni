@@ -354,7 +354,6 @@
                                         app:cardCornerRadius="10dp"
                                         android:layout_margin="2dp"
                                         >
-ç
                                         <EditText
                                             android:id="@+id/contrasena_login"
                                             android:layout_width="match_parent"
@@ -404,11 +403,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/zud_bold"
-                            android:textColor="@color/white"
-                            android:text="Login"
                             android:gravity="center"
+                            android:text="Login"
+                            android:textColor="@color/white"
                             android:textSize="30sp"
-                            >
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="0dp">
 
                         </TextView>
 
@@ -444,9 +444,8 @@
                         android:fontFamily="@font/share_bold"
                         android:textColor="@color/black"
                         android:layout_weight="1"
-                        android:textAlignment="textEnd"
                         android:textSize="20sp"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center|end"
                         >
 
 
