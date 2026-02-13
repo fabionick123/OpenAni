@@ -35,9 +35,6 @@ public class Data {
         @SerializedName("leechers")
         public int leechers;
 
-
-
-
     }
 
 }
