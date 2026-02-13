@@ -19,22 +19,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.API_Manager.API_Client;
 import com.astememe.openani.API_Manager.API_Interface;
 import com.astememe.openani.API_Manager.Data;
 import com.astememe.openani.R;
-import com.astememe.openani.Ventanas.Adaptador_Evento.TorrentAdapter;
+import com.astememe.openani.Adaptador_Evento.TorrentAdapter;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -174,50 +171,5 @@ public class MainAnime extends AppCompatActivity {
                 }, slide_out.getDuration());
             }
         });
-
     }
-
-
-
-
-
-
-    public static class SostenDeVistas extends RecyclerView.ViewHolder {
-        RecyclerView recyclerView =findViewById(R.id.torrentRecycle);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new TorrentAdapter(this, torrentsModel);
-        recyclerView.setAdapter(adapter);
-        TextView titulo_torrent, tamano_torrent, ultima_fecha_torrent, cantidad_seeders_torrent, cantidad_leechers_torrent, cantidad_likes_torrent, cantidad_dislikes_torrent, magnet_boton_torrent;
-
-        Call<Data> call = apiInterface.getRecent(null);
-        call.enqueue(new Callback<Data>() {
-            @Override
-            public void onResponse(Call<Data> call, Response<Data> response) {
-                if (response.isSuccessful() && response.body().torrents != null) {
-                    torrentsModel.clear();
-                    if (response.body().torrents != null) {
-                        torrentsModel.addAll(response.body().torrents);
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-            }
-            @Override
-            public void onFailure(Call<Data> call, Throwable t) {
-                Log.d("AAAAAAAAAAAAAAAAa", "AAAAAAAAAAAAAAAAa");
-            }
-        });
-        public SostenDeVistas(@NonNull View itemView) {
-            super(itemView);
-            titulo_torrent = itemView.findViewById(R.id.titulo_torrent);
-            tamano_torrent = itemView.findViewById(R.id.tamano_torrent);
-            ultima_fecha_torrent = itemView.findViewById(R.id.fecha_actualizacion_torrent);
-            cantidad_seeders_torrent = itemView.findViewById(R.id.cantidad_seeders);
-            cantidad_leechers_torrent = itemView.findViewById(R.id.cantidad_leechers);
-            cantidad_likes_torrent = itemView.findViewById(R.id.cantidad_likes);
-            cantidad_dislikes_torrent = itemView.findViewById(R.id.cantidad_dislikes);
-            magnet_boton_torrent = itemView.findViewById(R.id.magnet_boton);
-        }
-    }
-
 }

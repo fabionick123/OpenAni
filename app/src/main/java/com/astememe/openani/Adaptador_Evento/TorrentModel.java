@@ -1,4 +1,4 @@
-package com.astememe.openani.Ventanas.Adaptador_Evento;
+package com.astememe.openani.Adaptador_Evento;
 
 public class TorrentModel {
 
