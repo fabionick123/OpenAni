@@ -424,7 +424,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/registrarse"
+                        android:id="@+id/registrarse_TV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Registrarse"

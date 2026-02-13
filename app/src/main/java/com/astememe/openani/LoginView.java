@@ -3,6 +3,7 @@ package com.astememe.openani;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class LoginView extends AppCompatActivity {
 
     ConstraintLayout boton_login;
+    TextView registro_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,15 @@ public class LoginView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginView.this, MainAnime.class);
+                startActivity(intent);
+            }
+        });
+
+        registro_tv = findViewById(R.id.registrarse_TV);
+        registro_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginView.this, RegisterView.class);
                 startActivity(intent);
             }
         });
