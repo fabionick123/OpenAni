@@ -1,4 +1,4 @@
-package com.astememe.openani;
+package com.astememe.openani.Ventanas;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.astememe.openani.R;
 
 public class MainAnime extends AppCompatActivity {
 
