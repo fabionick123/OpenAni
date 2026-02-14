@@ -3,6 +3,7 @@ package com.astememe.openani.Ventanas;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,11 +30,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.astememe.openani.API_Manager.API_Client;
 import com.astememe.openani.API_Manager.API_Interface;
 import com.astememe.openani.API_Manager.Data;
-import com.astememe.openani.Adaptador_Evento.TorrentModel;
 import com.astememe.openani.R;
 import com.astememe.openani.Adaptador_Evento.TorrentAdapter;
-import com.astememe.openani.RecyclerView.RecyclerViewAdapter;
-import com.bumptech.glide.load.model.Model;
 
 import java.util.ArrayList;
 
@@ -44,10 +43,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainAnime extends AppCompatActivity {
-    public ArrayList<TorrentModel> torrentModelArrayList = new ArrayList<>();
-    RecyclerView recyclerView;
-    EditText barra_busqueda;
 
+    TorrentAdapter adapter;
+
+    EditText busqueda;
+
+    List<Data.Torrent> torrentList = new ArrayList<>();
+    RecyclerView torrentRecycle;
     ImageView barra_lateral_icono;
     LayoutInflater inflador_menu_lateral;
     LinearLayout contenedor_menu_lateral;
@@ -67,11 +69,11 @@ public class MainAnime extends AppCompatActivity {
     TextView manga_non_english;
     TextView manga_original;
 
+    ImageView foto_perfil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fillItems();
-
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_anime);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -79,8 +81,13 @@ public class MainAnime extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        recyclerView = findViewById(R.id.torrentRecycle);
-        barra_busqueda = findViewById(R.id.searchbar_anime);
+        torrentRecycle = findViewById(R.id.torrentRecycle);
+        fillTorrents("anime");
+        torrentRecycle.setLayoutManager(new GridLayoutManager(this, 1));
+        adapter = new TorrentAdapter(this, torrentList);
+        torrentRecycle.setAdapter(adapter);
+        busqueda = findViewById(R.id.searchbar_anime);
+
 
         barra_lateral_icono = findViewById(R.id.side_nav_main_anime);
         contenedor_menu_lateral = findViewById(R.id.contenedormenulateral);
@@ -90,7 +97,9 @@ public class MainAnime extends AppCompatActivity {
 
         sombra_menu_lateral.setVisibility(INVISIBLE);
 
-        inflador_menu_lateral = LayoutInflater.from(this);
+        inflador_menu_lateral = LayoutInflater
+                .from(this);
+
 
         barra_lateral_icono.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +113,7 @@ public class MainAnime extends AppCompatActivity {
                 cerrar_menu_lateral = menu_lateral.findViewById(R.id.cerrar_menu_lateral);
                 anime = menu_lateral.findViewById(R.id.anime);
                 manga = menu_lateral.findViewById(R.id.manga);
+                foto_perfil = menu_lateral.findViewById(R.id.imagen_perfil);
 
 
                 List<TextView> subcategorias_anime = new ArrayList<>(Arrays.asList(
@@ -118,10 +128,19 @@ public class MainAnime extends AppCompatActivity {
                         manga_original = menu_lateral.findViewById(R.id.manga_original)
                 ));
 
+
                 cerrar_menu_lateral.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         cerrar_menu_lateral(slide_out);
+                    }
+                });
+
+                foto_perfil.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainAnime.this, AccountView.class);
+                        startActivity(intent);
                     }
                 });
 
@@ -130,6 +149,7 @@ public class MainAnime extends AppCompatActivity {
                     public void onClick(View v) {
                         header_categoria.setText("Anime");
                         header_subcategoria.setText("Most Recent");
+                        fillTorrents("anime");
                         cerrar_menu_lateral(slide_out);
                     }
                 });
@@ -139,6 +159,7 @@ public class MainAnime extends AppCompatActivity {
                     public void onClick(View v) {
                         header_categoria.setText("Manga");
                         header_subcategoria.setText("Most Recent");
+                        fillTorrents("manga");
                         cerrar_menu_lateral(slide_out);
                     }
                 });
@@ -179,66 +200,55 @@ public class MainAnime extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void filtrarTexto(String texto, TorrentAdapter adapter) {
-        ArrayList<TorrentModel> filtrados = new ArrayList<>();
-
-        for (TorrentModel item : torrentModelArrayList) {
-            if (item.getTitulo_torrent().toLowerCase().contains(texto.toLowerCase())) {
-                filtrados.add(item);
+        busqueda.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-        }
 
-        adapter.filtrar(filtrados);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filtrarPorNombre(s.toString(), adapter);
+            }
+        });
     }
-
-    public void fillItems() {
-        API_Interface appInterface = API_Client.getClient().create(API_Interface.class);
-        Call<Data> call = appInterface.getRecent(null);
-
-        call.enqueue(new Callback<Data>() {
+    private void fillTorrents(String categoria) {
+        API_Client.getAPI_Interface().getByCategory(categoria).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
+                torrentList.clear();
+                torrentList.addAll(response.body().torrents);
+                adapter.notifyDataSetChanged();
 
-                List<Data.Torrent> items = (List<Data.Torrent>) response.body();
-
-                for (Data.Torrent item : items) {
-                    torrentModelArrayList.add(
-                            new TorrentModel(
-                                    item.titulo,
-                                    item.tamano,
-                                    item.fecha,
-                                    item.seeders,
-                                    item.leechers,
-                                    item.enlace
-                            )
-                    );
-                }
-
-                TorrentAdapter adapter = new TorrentAdapter(getApplicationContext(), torrentModelArrayList);
-                GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 1);
-
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(adapter);
-
-                barra_busqueda.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        filtrarTexto(s.toString(), adapter);
-                    }
-                });
             }
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-                Log.d("Error!!", t.toString());
+                Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    private void filtrarPorNombre(String texto, TorrentAdapter adapter) {
+        if (texto.isEmpty()) {
+            fillTorrents("anime");
+            return;
+        }
+        API_Client.getAPI_Interface().getByName(texto).enqueue(new Callback<Data>() {
+            @Override
+            public void onResponse(Call<Data> call, Response<Data> response) {
+                torrentList.clear();
+                torrentList.addAll(response.body().torrents);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<Data> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
