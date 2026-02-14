@@ -101,7 +101,7 @@
                 android:id="@+id/subcategoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Music Video"
+                android:text="Most Recent"
                 android:textColor="@color/white"
                 android:fontFamily="@font/share_italic"
                 android:layout_gravity="center"

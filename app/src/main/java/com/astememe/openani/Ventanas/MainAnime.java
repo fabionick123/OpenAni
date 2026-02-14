@@ -6,20 +6,25 @@ import static android.view.View.VISIBLE;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.API_Manager.API_Client;
@@ -32,6 +37,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,9 +46,10 @@ public class MainAnime extends AppCompatActivity {
 
     TorrentAdapter adapter;
 
-    ArrayList<Data.Torrent> torrentsModel = new ArrayList<Data.Torrent>();
+    EditText busqueda;
 
-    API_Interface apiInterface = API_Client.getClient().create(API_Interface.class);
+    List<Data.Torrent> torrentList = new ArrayList<>();
+    RecyclerView torrentRecycle;
     ImageView barra_lateral_icono;
     LayoutInflater inflador_menu_lateral;
     LinearLayout contenedor_menu_lateral;
@@ -74,6 +81,13 @@ public class MainAnime extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        torrentRecycle = findViewById(R.id.torrentRecycle);
+        fillTorrents("anime");
+        torrentRecycle.setLayoutManager(new GridLayoutManager(this, 1));
+        adapter = new TorrentAdapter(this, torrentList);
+        torrentRecycle.setAdapter(adapter);
+        busqueda = findViewById(R.id.searchbar_anime);
+
 
         barra_lateral_icono = findViewById(R.id.side_nav_main_anime);
         contenedor_menu_lateral = findViewById(R.id.contenedormenulateral);
@@ -135,6 +149,7 @@ public class MainAnime extends AppCompatActivity {
                     public void onClick(View v) {
                         header_categoria.setText("Anime");
                         header_subcategoria.setText("Most Recent");
+                        fillTorrents("anime");
                         cerrar_menu_lateral(slide_out);
                     }
                 });
@@ -144,6 +159,7 @@ public class MainAnime extends AppCompatActivity {
                     public void onClick(View v) {
                         header_categoria.setText("Manga");
                         header_subcategoria.setText("Most Recent");
+                        fillTorrents("manga");
                         cerrar_menu_lateral(slide_out);
                     }
                 });
@@ -181,6 +197,57 @@ public class MainAnime extends AppCompatActivity {
                         contenedor_menu_lateral.removeAllViews();
                     }
                 }, slide_out.getDuration());
+            }
+        });
+
+        busqueda.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filtrarPorNombre(s.toString(), adapter);
+            }
+        });
+    }
+    private void fillTorrents(String categoria) {
+        API_Client.getAPI_Interface().getByCategory(categoria).enqueue(new Callback<Data>() {
+            @Override
+            public void onResponse(Call<Data> call, Response<Data> response) {
+                torrentList.clear();
+                torrentList.addAll(response.body().torrents);
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<Data> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void filtrarPorNombre(String texto, TorrentAdapter adapter) {
+        if (texto.isEmpty()) {
+            fillTorrents("anime");
+            return;
+        }
+        API_Client.getAPI_Interface().getByName(texto).enqueue(new Callback<Data>() {
+            @Override
+            public void onResponse(Call<Data> call, Response<Data> response) {
+                torrentList.clear();
+                torrentList.addAll(response.body().torrents);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<Data> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
