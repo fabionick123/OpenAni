@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.API_Manager.API_Client;
-import com.astememe.openani.API_Manager.API_Interface;
 import com.astememe.openani.API_Manager.Data;
 import com.astememe.openani.R;
 import com.astememe.openani.Adaptador_Evento.TorrentAdapter;
@@ -42,6 +41,7 @@ import retrofit2.Response;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class MainAnime extends AppCompatActivity {
 
@@ -61,6 +61,7 @@ public class MainAnime extends AppCompatActivity {
 
     TextView anime;
     TextView anime_music_video;
+    TextView anime_english;
     TextView anime_non_english;
     TextView anime_original;
     TextView manga;
@@ -69,6 +70,9 @@ public class MainAnime extends AppCompatActivity {
     TextView manga_original;
     ImageView foto_perfil;
     ImageButton boton_descargar;
+
+    Handler buscarDelayer = new Handler();
+    Runnable buscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,14 +122,15 @@ public class MainAnime extends AppCompatActivity {
 
                 List<TextView> subcategorias_anime = new ArrayList<>(Arrays.asList(
                     anime_music_video = menu_lateral.findViewById(R.id.music_video),
+                    anime_english = menu_lateral.findViewById(R.id.anime_english),
                     anime_non_english = menu_lateral.findViewById(R.id.anime_non_english),
                     anime_original = menu_lateral.findViewById(R.id.anime_original)
                 ));
 
                 List<TextView> subcategorias_manga = new ArrayList<>(Arrays.asList(
-                        manga_english = menu_lateral.findViewById(R.id.manga_english),
-                        manga_non_english = menu_lateral.findViewById(R.id.manga_non_english),
-                        manga_original = menu_lateral.findViewById(R.id.manga_original)
+                    manga_english = menu_lateral.findViewById(R.id.manga_english),
+                    manga_non_english = menu_lateral.findViewById(R.id.manga_non_english),
+                    manga_original = menu_lateral.findViewById(R.id.manga_original)
                 ));
 
 
@@ -211,7 +216,13 @@ public class MainAnime extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filtrarPorNombre(s.toString(), adapter);
+                buscar = new Runnable() {
+                    @Override
+                    public void run() {
+                        filtrarPorNombre(s.toString(), header_categoria.getText().toString().toLowerCase(), header_subcategoria.getText().toString(), adapter);;
+                    }
+                };
+                buscarDelayer.postDelayed(buscar, 500);
             }
         });
     }
@@ -220,7 +231,9 @@ public class MainAnime extends AppCompatActivity {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 torrentList.clear();
-                torrentList.addAll(response.body().torrents);
+                if (response.isSuccessful() && response.body() != null) {
+                    torrentList.addAll(response.body().torrents);
+                }
                 adapter.notifyDataSetChanged();
 
             }
@@ -232,23 +245,59 @@ public class MainAnime extends AppCompatActivity {
         });
     }
 
-    private void filtrarPorNombre(String texto, TorrentAdapter adapter) {
+    private void filtrarPorNombre(String texto, String categoria, String subcategoria, TorrentAdapter adapter) {
         if (texto.isEmpty()) {
-            fillTorrents("anime");
+            fillTorrents(categoria.toLowerCase());
             return;
         }
-        API_Client.getAPI_Interface().getByName(texto).enqueue(new Callback<Data>() {
-            @Override
-            public void onResponse(Call<Data> call, Response<Data> response) {
-                torrentList.clear();
-                torrentList.addAll(response.body().torrents);
-                adapter.notifyDataSetChanged();
-            }
+        if (convertirSubcategoria(subcategoria).isEmpty()) {
+            API_Client.getAPI_Interface().getByNameandCategory(Map.of("q", texto, "category", categoria.toLowerCase())).enqueue(new Callback<Data>() {
+                @Override
+                public void onResponse(Call<Data> call, Response<Data> response) {
+                    torrentList.clear();
+                    if (response.isSuccessful() && response.body() != null) {
+                        torrentList.addAll(response.body().torrents);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
 
-            @Override
-            public void onFailure(Call<Data> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Data> call, Throwable t) {
+                    Log.d("Error", "Error");
+                }
+            });
+        } else {
+            API_Client.getAPI_Interface().getByNameandCategoryandSubCategory(Map.of("q", texto, "category", categoria, "sub_category", convertirSubcategoria(subcategoria))).enqueue(new Callback<Data>() {
+                @Override
+                public void onResponse(Call<Data> call, Response<Data> response) {
+                    Log.d("Respuesta", response.toString());
+                    torrentList.clear();
+                    if (response.isSuccessful() && response.body() != null) {
+                        torrentList.addAll(response.body().torrents);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onFailure(Call<Data> call, Throwable t) {
+                    Log.d("Error", "Error");
+                }
+            });
+        }
+    }
+
+    private String convertirSubcategoria(String header_subcategoria) {
+        String subcategoria = "";
+        if (header_subcategoria.equals("Music Video")) {
+            subcategoria = "music-video";
+        } else if (header_subcategoria.equals("English")) {
+            subcategoria = "eng";
+        } else if (header_subcategoria.equals("Non English")) {
+            subcategoria = "non-eng";
+        } else if (header_subcategoria.equals("Original")) {
+            subcategoria = "raw";
+        }
+
+        return subcategoria;
     }
 }
