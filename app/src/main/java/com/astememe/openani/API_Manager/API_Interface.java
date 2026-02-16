@@ -24,6 +24,10 @@ public interface API_Interface {
     @GET("/nyaa")
     Call<Data> getByName(@Query("q") String nombre);
 
+    @GET("/nyaa")
+    Call<Data> getByNameandCategory(@QueryMap Map<String, String> filters);
+
+    @GET("/nyaa")
     Call<Data> getByNameandCategoryandSubCategory(@QueryMap Map<String, String> filters);
 
 
