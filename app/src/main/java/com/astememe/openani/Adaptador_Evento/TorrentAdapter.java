@@ -1,11 +1,15 @@
 package com.astememe.openani.Adaptador_Evento;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.API_Manager.Data;
 import com.astememe.openani.R;
+import com.astememe.openani.Ventanas.MainAnime;
+import com.astememe.openani.Ventanas.TorrentView;
 
 import java.util.List;
 
@@ -47,6 +53,8 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
         holder.tamano_torrent.setText(torrent.getTamano());
         holder.ultima_fecha_torrent.setText(torrent.getFecha());
 
+//        holder.magnet_boton_torrent.setText(torrent.enlace);
+
     }
 
     @Override
@@ -56,7 +64,7 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
 
     public static class SostenDeVistas extends RecyclerView.ViewHolder {
         TextView titulo_torrent, tamano_torrent, ultima_fecha_torrent, cantidad_seeders_torrent, cantidad_leechers_torrent, cantidad_likes_torrent, cantidad_dislikes_torrent, magnet_boton_torrent;
-    //    ImageButton image_boton_download;
+        ImageButton image_boton_download;
         public SostenDeVistas(@NonNull View itemView) {
             super(itemView);
             titulo_torrent = itemView.findViewById(R.id.titulo_torrent);
@@ -67,6 +75,7 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
             cantidad_likes_torrent = itemView.findViewById(R.id.cantidad_likes);
             cantidad_dislikes_torrent = itemView.findViewById(R.id.cantidad_dislikes);
             magnet_boton_torrent = itemView.findViewById(R.id.magnet_boton);
+            image_boton_download = itemView.findViewById(R.id.imagebutton_download);
         }
     }
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,9 +46,7 @@ import java.util.List;
 public class MainAnime extends AppCompatActivity {
 
     TorrentAdapter adapter;
-
     EditText busqueda;
-
     List<Data.Torrent> torrentList = new ArrayList<>();
     RecyclerView torrentRecycle;
     ImageView barra_lateral_icono;
@@ -68,8 +67,8 @@ public class MainAnime extends AppCompatActivity {
     TextView manga_english;
     TextView manga_non_english;
     TextView manga_original;
-
     ImageView foto_perfil;
+    ImageButton boton_descargar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +87,7 @@ public class MainAnime extends AppCompatActivity {
         torrentRecycle.setAdapter(adapter);
         busqueda = findViewById(R.id.searchbar_anime);
 
+        boton_descargar = findViewById(R.id.imagebutton_download);
 
         barra_lateral_icono = findViewById(R.id.side_nav_main_anime);
         contenedor_menu_lateral = findViewById(R.id.contenedormenulateral);
