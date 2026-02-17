@@ -174,8 +174,10 @@ public class MainAnime extends AppCompatActivity {
                     subcategoria.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            String textoSub = subcategoria.getText().toString();
                             header_categoria.setText("Anime");
-                            header_subcategoria.setText(subcategoria.getText().toString());
+                            header_subcategoria.setText(textoSub);
+                            filtrarPorNombre(busqueda.getText().toString(), "anime", textoSub, adapter);
                             cerrar_menu_lateral(slide_out);
                         }
                     });
@@ -185,8 +187,11 @@ public class MainAnime extends AppCompatActivity {
                     subcategoria.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            String textoSub = subcategoria.getText().toString();
                             header_categoria.setText("Manga");
-                            header_subcategoria.setText(subcategoria.getText().toString());
+                            header_subcategoria.setText(textoSub);
+                            filtrarPorNombre(busqueda.getText().toString(), "manga", textoSub, adapter);
+
                             cerrar_menu_lateral(slide_out);
                         }
                     });
@@ -246,7 +251,8 @@ public class MainAnime extends AppCompatActivity {
     }
 
     private void filtrarPorNombre(String texto, String categoria, String subcategoria, TorrentAdapter adapter) {
-        if (texto.isEmpty()) {
+        torrentList.clear();
+        if (texto.isEmpty() && subcategoria == "most recent") {
             fillTorrents(categoria.toLowerCase());
             return;
         }
@@ -267,7 +273,7 @@ public class MainAnime extends AppCompatActivity {
                 }
             });
         } else {
-            API_Client.getAPI_Interface().getByNameandCategoryandSubCategory(Map.of("q", texto, "category", categoria, "sub_category", convertirSubcategoria(subcategoria))).enqueue(new Callback<Data>() {
+            API_Client.getAPI_Interface().getByNameandCategoryandSubCategory(Map.of("q", texto, "category", categoria, "sub_category", convertirSubcategoria(subcategoria), "sort", "seeders", "order", "desc")).enqueue(new Callback<Data>() {
                 @Override
                 public void onResponse(Call<Data> call, Response<Data> response) {
                     Log.d("Respuesta", response.toString());

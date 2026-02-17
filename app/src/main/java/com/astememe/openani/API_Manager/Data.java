@@ -20,7 +20,7 @@ public class Data {
         @SerializedName("title")
         public String titulo;
 
-        @SerializedName("torrent")
+        @SerializedName("magnet")
         public String enlace;
 
         @SerializedName("size")
