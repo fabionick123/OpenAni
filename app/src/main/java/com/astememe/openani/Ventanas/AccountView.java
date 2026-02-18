@@ -39,5 +39,6 @@ public class AccountView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

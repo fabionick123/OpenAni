@@ -168,12 +168,11 @@
                         android:id="@+id/fotoperfil"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/spiderman"
-                        android:padding="3dp"
-                        app:border_size="2dp"
-                        app:border_color="@color/black"
                         android:layout_gravity="bottom|center"
-                        >
+                        android:padding="3dp"
+                        android:src="@drawable/spiderman"
+                        app:border_color="@color/black"
+                        app:border_size="2dp">
 
                     </io.woong.shapedimageview.CircleImageView>
 
