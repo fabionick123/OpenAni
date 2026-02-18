@@ -53,6 +53,7 @@ public class MainAnime extends AppCompatActivity {
     LayoutInflater inflador_menu_lateral;
     LinearLayout contenedor_menu_lateral;
     LinearLayout sombra_menu_lateral;
+    Boolean menu_lateral_visible = false;
     View menu_lateral;
     ImageView cerrar_menu_lateral;
 
@@ -108,6 +109,7 @@ public class MainAnime extends AppCompatActivity {
         barra_lateral_icono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                menu_lateral_visible = !menu_lateral_visible;
                 sombra_menu_lateral.setVisibility(VISIBLE);
                 contenedor_menu_lateral.removeAllViews();
                 menu_lateral = inflador_menu_lateral.inflate(R.layout.menu_lateral, contenedor_menu_lateral, true);
@@ -118,6 +120,14 @@ public class MainAnime extends AppCompatActivity {
                 anime = menu_lateral.findViewById(R.id.anime);
                 manga = menu_lateral.findViewById(R.id.manga);
                 foto_perfil = menu_lateral.findViewById(R.id.imagen_perfil);
+
+                sombra_menu_lateral.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        menu_lateral_visible = !menu_lateral_visible;
+                        cerrar_menu_lateral(slide_out);
+                    }
+                });
 
 
                 List<TextView> subcategorias_anime = new ArrayList<>(Arrays.asList(
