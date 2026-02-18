@@ -53,6 +53,7 @@ public class MainAnime extends AppCompatActivity {
     LayoutInflater inflador_menu_lateral;
     LinearLayout contenedor_menu_lateral;
     LinearLayout sombra_menu_lateral;
+    Boolean menu_lateral_visible = false;
     View menu_lateral;
     ImageView cerrar_menu_lateral;
 
@@ -108,6 +109,7 @@ public class MainAnime extends AppCompatActivity {
         barra_lateral_icono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                menu_lateral_visible = !menu_lateral_visible;
                 sombra_menu_lateral.setVisibility(VISIBLE);
                 contenedor_menu_lateral.removeAllViews();
                 menu_lateral = inflador_menu_lateral.inflate(R.layout.menu_lateral, contenedor_menu_lateral, true);
@@ -118,6 +120,14 @@ public class MainAnime extends AppCompatActivity {
                 anime = menu_lateral.findViewById(R.id.anime);
                 manga = menu_lateral.findViewById(R.id.manga);
                 foto_perfil = menu_lateral.findViewById(R.id.imagen_perfil);
+
+                sombra_menu_lateral.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        menu_lateral_visible = !menu_lateral_visible;
+                        cerrar_menu_lateral(slide_out);
+                    }
+                });
 
 
                 List<TextView> subcategorias_anime = new ArrayList<>(Arrays.asList(
@@ -174,8 +184,10 @@ public class MainAnime extends AppCompatActivity {
                     subcategoria.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            String textoSub = subcategoria.getText().toString();
                             header_categoria.setText("Anime");
-                            header_subcategoria.setText(subcategoria.getText().toString());
+                            header_subcategoria.setText(textoSub);
+                            filtrarPorNombre(busqueda.getText().toString(), "anime", textoSub, adapter);
                             cerrar_menu_lateral(slide_out);
                         }
                     });
@@ -185,8 +197,11 @@ public class MainAnime extends AppCompatActivity {
                     subcategoria.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            String textoSub = subcategoria.getText().toString();
                             header_categoria.setText("Manga");
-                            header_subcategoria.setText(subcategoria.getText().toString());
+                            header_subcategoria.setText(textoSub);
+                            filtrarPorNombre(busqueda.getText().toString(), "manga", textoSub, adapter);
+
                             cerrar_menu_lateral(slide_out);
                         }
                     });
@@ -246,7 +261,8 @@ public class MainAnime extends AppCompatActivity {
     }
 
     private void filtrarPorNombre(String texto, String categoria, String subcategoria, TorrentAdapter adapter) {
-        if (texto.isEmpty()) {
+        torrentList.clear();
+        if (texto.isEmpty() && subcategoria == "most recent") {
             fillTorrents(categoria.toLowerCase());
             return;
         }
@@ -267,7 +283,7 @@ public class MainAnime extends AppCompatActivity {
                 }
             });
         } else {
-            API_Client.getAPI_Interface().getByNameandCategoryandSubCategory(Map.of("q", texto, "category", categoria, "sub_category", convertirSubcategoria(subcategoria))).enqueue(new Callback<Data>() {
+            API_Client.getAPI_Interface().getByNameandCategoryandSubCategory(Map.of("q", texto, "category", categoria, "sub_category", convertirSubcategoria(subcategoria), "sort", "seeders", "order", "desc")).enqueue(new Callback<Data>() {
                 @Override
                 public void onResponse(Call<Data> call, Response<Data> response) {
                     Log.d("Respuesta", response.toString());
