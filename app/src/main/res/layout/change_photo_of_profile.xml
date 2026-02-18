@@ -3,7 +3,7 @@
     android:id="@+id/menuHorizontalCambiarFoto"
     android:layout_width="match_parent"
     android:layout_height="350dp"
-    android:background="#673AB7"
+    android:background="@color/azul_header"
     android:fillViewport="true"
     android:orientation="horizontal">
     <ScrollView
@@ -91,6 +91,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -152,9 +153,206 @@
                     </io.woong.shapedimageview.CircleImageView>
 
                 </LinearLayout>
-
             </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/SeptimaOpcionDeFotoDePerfil"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_de_toga"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/OctavaOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_kakashi"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/NovenaOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_naruto_shippuden"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimaOpcionDeFotoDePerfil"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_de_personaje_de_tokio_revengers"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimoPrimeraOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_sasuke_shipuden"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimoSegundaOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_satoru_gojo"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimaTerceraOpcionDeFotoDePerfil"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_melodias"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimoCuartaOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_de_mikasa"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <io.woong.shapedimageview.CircleImageView
+                        android:id="@+id/DecimoQuintaOpcionDeFotoDePeril"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/foto_de_perfil_de_luffy"
+                        app:border_size="1dp"
+                        android:alpha="0.2"
+                        app:border_color="@color/black"
+                        android:layout_gravity="center">
+                    </io.woong.shapedimageview.CircleImageView>
+
+                </LinearLayout>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
