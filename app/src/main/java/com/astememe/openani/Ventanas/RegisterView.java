@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,8 @@ import com.astememe.openani.R;
 
 import java.util.regex.Pattern;
 
+import io.woong.shapedimageview.CircleImageView;
+
 public class RegisterView extends AppCompatActivity {
 
     EditText usuarioRegister;
@@ -27,7 +31,9 @@ public class RegisterView extends AppCompatActivity {
     EditText confirmPasswordRegister;
     TextView botonRegistrarse;
     TextView tengoCuenta;
-
+    LinearLayout primeraFoto, segundaFoto, terceraFoto, cuartaFoto, quintaFoto, sextaFoto, septimaFoto, octavaFoto, novenaFoto, decimaFoto, decimoPrimeraFoto, decimoSegundaFoto, decimoTerceraFoto, decimoCuartaFoto, decimoQuintaFoto;
+    CircleImageView botonCambiarFoto;
+    LayoutInflater infladorDeCambiarFoto;
 
 
     @Override

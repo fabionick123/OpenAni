@@ -56,7 +56,7 @@ public class AccountView extends AppCompatActivity {
         });
         layoutInflateAcountViewReference = findViewById(R.id.contenedorMenuFotoPerfil);
         botonAtras = findViewById(R.id.flechaAtrasAcountView);
-        botonCambiarFoto = (CircleImageView) findViewById(R.id.cambiarfotoperfil);
+        botonCambiarFoto = findViewById(R.id.cambiarfotoperfil);
         botonAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,6 @@ public class AccountView extends AppCompatActivity {
                 Animation slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
                 Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
                 menuCambiarFoto.setAnimation(slide_in);
-                cerrarMenu = menuCambiarFoto.findViewById(R.id.cerrar_menu_lateral);
             }
         });
 
