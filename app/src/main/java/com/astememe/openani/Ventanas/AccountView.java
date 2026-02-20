@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class AccountView extends AppCompatActivity {
 
     ImageView cerrarMenu;
     LinearLayout primeraFoto, segundaFoto, terceraFoto, cuartaFoto, quintaFoto, sextaFoto, septimaFoto, octavaFoto, novenaFoto, decimaFoto, decimoPrimeraFoto, decimoSegundaFoto, decimoTerceraFoto, decimoCuartaFoto, decimoQuintaFoto;
-    CircleImageView botonCambiarFoto;
+    View botonCambiarFoto;
     LayoutInflater infladorDeCambiarFoto;
     LinearLayout layoutInflateAcountViewReference;
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,56 +55,58 @@ public class AccountView extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         layoutInflateAcountViewReference = findViewById(R.id.contenedorMenuFotoPerfil);
         botonAtras = findViewById(R.id.flechaAtrasAcountView);
         botonCambiarFoto = findViewById(R.id.cambiarfotoperfil);
-        botonAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AccountView.this, MainAnime.class);
-                startActivity(intent);
-            }
-        });
-        infladorDeCambiarFoto = LayoutInflater
-                .from(this);
-        botonCambiarFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuCambiarFoto = infladorDeCambiarFoto.inflate(R.layout.change_photo_of_profile,layoutInflateAcountViewReference,true);
-                Animation slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
-                Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
-                menuCambiarFoto.setAnimation(slide_in);
-            }
-        });
 
-        List<LinearLayout> fotosDePerfil = new ArrayList<>(Arrays.asList(
-                primeraFoto = menuCambiarFoto.findViewById(R.id.contenedorKaneki),
-                segundaFoto = menuCambiarFoto.findViewById(R.id.contenedorJotaro),
-                terceraFoto = menuCambiarFoto.findViewById(R.id.contenedorJinWoo),
-                cuartaFoto = menuCambiarFoto.findViewById(R.id.contenedorGoku),
-                quintaFoto = menuCambiarFoto.findViewById(R.id.contenedorGohan),
-                sextaFoto = menuCambiarFoto.findViewById(R.id.contenedorNicoRobin),
-                septimaFoto = menuCambiarFoto.findViewById(R.id.contenedorToga),
-                octavaFoto = menuCambiarFoto.findViewById(R.id.contenedorKakashi),
-                novenaFoto = menuCambiarFoto.findViewById(R.id.contenedorNaruto),
-                decimaFoto = menuCambiarFoto.findViewById(R.id.contenedorPersonajeTR),
-                decimoPrimeraFoto = menuCambiarFoto.findViewById(R.id.contenedorSasuke),
-                decimoSegundaFoto = menuCambiarFoto.findViewById(R.id.contenedorGojo),
-                decimoTerceraFoto= menuCambiarFoto.findViewById(R.id.contenedorMelodias),
-                decimoCuartaFoto= menuCambiarFoto.findViewById(R.id.contenedorMikasa),
-                decimoQuintaFoto= menuCambiarFoto.findViewById(R.id.contenedorLuffy)
-        ));
-
-        for (LinearLayout foto: fotosDePerfil) {
-            foto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    sharedPreferences.edit().putString("foto-perfil",String.valueOf(foto));
-                }
-            });
+        infladorDeCambiarFoto = LayoutInflater.from(this);
+        botonCambiarFoto.setOnClickListener(v -> {
+            layoutInflateAcountViewReference.removeAllViews();
+            botonCambiarFoto = infladorDeCambiarFoto.inflate(R.layout.change_photo_of_profile, layoutInflateAcountViewReference, true);
+            Animation slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+            Animation slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+            botonCambiarFoto.setAnimation(slide_in);
+            List<LinearLayout> fotosDePerfil = new ArrayList<>(Arrays.asList(
+                    primeraFoto = botonCambiarFoto.findViewById(R.id.contenedorKaneki),
+                    segundaFoto = botonCambiarFoto.findViewById(R.id.contenedorJotaro),
+                    terceraFoto = botonCambiarFoto.findViewById(R.id.contenedorJinWoo),
+                    cuartaFoto = botonCambiarFoto.findViewById(R.id.contenedorGoku),
+                    quintaFoto = botonCambiarFoto.findViewById(R.id.contenedorGohan),
+                    sextaFoto = botonCambiarFoto.findViewById(R.id.contenedorNicoRobin),
+                    septimaFoto = botonCambiarFoto.findViewById(R.id.contenedorToga),
+                    octavaFoto = botonCambiarFoto.findViewById(R.id.contenedorKakashi),
+                    novenaFoto = botonCambiarFoto.findViewById(R.id.contenedorNaruto),
+                    decimaFoto = botonCambiarFoto.findViewById(R.id.contenedorPersonajeTR),
+                    decimoPrimeraFoto = botonCambiarFoto.findViewById(R.id.contenedorSasuke),
+                    decimoSegundaFoto = botonCambiarFoto.findViewById(R.id.contenedorGojo),
+                    decimoTerceraFoto = botonCambiarFoto.findViewById(R.id.contenedorMelodias),
+                    decimoCuartaFoto = botonCambiarFoto.findViewById(R.id.contenedorMikasa),
+                    decimoQuintaFoto = botonCambiarFoto.findViewById(R.id.contenedorLuffy)
+            ));
+            for (LinearLayout foto: fotosDePerfil) {
+                foto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TextView nombreFoto = v.findViewById(R.id.idImagen);
+                        String valor = nombreFoto.getText().toString();
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        sharedPreferences.edit().putString("foto_perfil", valor).apply();
+                        desplazarMenu(slide_out);
+                    }
+                });
+            };
+        });
 
         }
+    public void desplazarMenu(Animation slide_out) {
+        botonCambiarFoto.setAnimation(slide_out);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                layoutInflateAcountViewReference.removeAllViews();
+            }
+        }, slide_out.getDuration());
+    }
 
     }
-}

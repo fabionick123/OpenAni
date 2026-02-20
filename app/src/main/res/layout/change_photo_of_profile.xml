@@ -42,7 +42,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/kanekiID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="kaneki">
@@ -68,7 +68,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/jotaroID"
+                        android:id="@+id/idImagen"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:text="jotaro">
@@ -95,7 +95,7 @@
 
                     >
                     <TextView
-                        android:id="@+id/jinwooID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="jinwoo">
@@ -129,7 +129,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/gokuID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="goku">
@@ -156,7 +156,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/gohanID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="gohan">
@@ -183,7 +183,7 @@
 
                     >
                     <TextView
-                        android:id="@+id/nicorobinID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="nicorobin">
@@ -218,7 +218,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/togaID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="toga">
@@ -245,7 +245,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/kakashiID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="kakashi">
@@ -272,7 +272,7 @@
 
                     >
                     <TextView
-                        android:id="@+id/narutoID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="naruto">
@@ -299,7 +299,7 @@
                 android:gravity="center"
                 >
                 <TextView
-                    android:id="@+id/personajeDeTRID"
+                    android:id="@+id/idImagen"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:text="personajeTR">
@@ -333,7 +333,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/sasukeID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="sasuke">
@@ -360,7 +360,7 @@
 
                     >
                     <TextView
-                        android:id="@+id/gojoID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="gojo">
@@ -394,7 +394,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/melodiasID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="melodias">
@@ -420,7 +420,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/mikasaID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="mikasa">
@@ -446,7 +446,7 @@
 
                     >
                     <TextView
-                        android:id="@+id/luffyID"
+                        android:id="@+id/idImagen"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:text="luffy">
