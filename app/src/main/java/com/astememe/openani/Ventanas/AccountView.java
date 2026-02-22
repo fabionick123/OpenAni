@@ -1,16 +1,13 @@
     package com.astememe.openani.Ventanas;
 
-    import static android.view.LayoutInflater.from;
-
-import android.content.Intent;
+    import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
+    import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.view.animation.Animation;
@@ -31,9 +28,7 @@ import com.astememe.openani.Django_Manager.Interfaces.DjangoClient;
 import com.astememe.openani.Django_Manager.Models.UserDataModel;
 import com.astememe.openani.Django_Manager.Models.UserUpdateModel;
 import com.astememe.openani.R;
-    import com.astememe.openani.R;
 
-    import java.io.ByteArrayOutputStream;
     import java.util.ArrayList;
     import java.util.Arrays;
     import java.util.List;
@@ -113,7 +108,7 @@ public class AccountView extends AppCompatActivity {
                     password = null;
                 }
 
-                UserUpdateModel userUpdateModel = new UserUpdateModel(username, email, password, imagen, descripcion);
+                UserUpdateModel userUpdateModel = new UserUpdateModel(username, email, password, imagen);
                 String token = "Bearer " + preferences.getString("token", "");
 
                 guardarCambios();
@@ -187,7 +182,7 @@ public class AccountView extends AppCompatActivity {
         editor.putString("descripcion", nuevaDescripcion);
         editor.putString("imagen", nuevaImagen);
 
-        UserUpdateModel userUpdateModel = new UserUpdateModel(nuevoNombre, nuevoCorreo, nuevaContrasena, nuevaImagen, nuevaDescripcion);
+        UserUpdateModel userUpdateModel = new UserUpdateModel(nuevoNombre, nuevoCorreo, nuevaContrasena, nuevaImagen);
 
         DjangoClient.getUserAPI_Interface().updateProfile(token, userUpdateModel).enqueue(new retrofit2.Callback<UserDataModel>() {
 
