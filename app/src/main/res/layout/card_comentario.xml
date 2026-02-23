@@ -114,53 +114,10 @@
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/comentario_mano_like_icono"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/mano_like_icono"
-                        android:gravity="center"
-
-                        />
-                    <TextView
-                        android:id="@+id/comentario_cantidad_likes"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:text="0"
-                        android:textSize="25dp"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/zud"
-                        android:textColor="@color/black"
-                        android:layout_marginRight="15dp"
-                        />
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/comentario_mano_dislike_icono"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/mano_dislike_icono"
-                        android:gravity="center"
-
-                        />
-                    <TextView
-                        android:id="@+id/comentario_cantidad_dislikes_icono"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:text="0"
-                        android:textSize="25dp"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/zud"
-                        android:textColor="@color/black"
-                        />
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

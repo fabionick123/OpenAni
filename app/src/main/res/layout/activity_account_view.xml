@@ -85,22 +85,7 @@
             android:layout_marginEnd="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
-
-            <ImageView
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:id="@+id/estrella"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="4dp"
-                android:src="@drawable/estrella_favorita_icono"
-                app:tint="@color/amarillo_favorito"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/menuCambiarFoto"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="800dp"
     android:background="@color/azul_header"
     android:fillViewport="true"
     android:orientation="horizontal"
@@ -15,17 +15,18 @@
         android:scrollbars="none"
         >
         <LinearLayout
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:text="Fotos de perfil"
                 android:textSize="40sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/share_bold"
                 android:textStyle="bold"
                 android:layout_marginVertical="10dp"/>
@@ -58,7 +59,6 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_kaneki"
                         app:border_size="1dp"
-                        android:alpha="0.2"
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -84,7 +84,6 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_jotaro"
                         app:border_size="1dp"
-                        android:alpha="0.2"
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -112,7 +111,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_jin_woo"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -146,7 +145,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_goku_ssj2"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -173,7 +172,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_gohan_ssj2"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -200,7 +199,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_nico_robin"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -235,7 +234,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_toga"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -262,7 +261,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_kakashi"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -289,7 +288,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_naruto"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -316,7 +315,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_tokio_revengers"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -350,7 +349,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_sasuke"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -377,7 +376,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_satoru_gojo"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -410,7 +409,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_melodias"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -436,7 +435,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_mikasa"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
@@ -463,7 +462,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/foto_de_perfil_luffy"
                         app:border_size="1dp"
-                        android:alpha="0.2"
+
                         app:border_color="@color/black"
                         android:layout_gravity="center">
                     </io.woong.shapedimageview.CircleImageView>
