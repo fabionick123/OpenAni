@@ -108,8 +108,7 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
             ultima_fecha_torrent = itemView.findViewById(R.id.fecha_actualizacion_torrent);
             cantidad_seeders_torrent = itemView.findViewById(R.id.cantidad_seeders);
             cantidad_leechers_torrent = itemView.findViewById(R.id.cantidad_leechers);
-            cantidad_likes_torrent = itemView.findViewById(R.id.cantidad_likes);
-            cantidad_dislikes_torrent = itemView.findViewById(R.id.cantidad_dislikes);
+
             magnet_boton_torrent = itemView.findViewById(R.id.magnet_boton);
             image_boton_download = itemView.findViewById(R.id.imagebutton_download);
         }
