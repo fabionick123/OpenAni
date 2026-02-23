@@ -53,7 +53,6 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
         holder.cantidad_seeders_torrent.setText(String.valueOf(torrent.getSeeders()));
         holder.cantidad_leechers_torrent.setText(String.valueOf(torrent.getLeechers()));
 
-
         holder.image_boton_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +77,7 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
                         if (response.isSuccessful()) {
                             Toast.makeText(context, "Guardado en la nube", Toast.LENGTH_SHORT).show();
                         } else {
+                            // Si Django devuelve error (ej: 400 Bad Request)
                             Log.e("POST_ERROR", "Error: " + response.code());
                         }
                     }
