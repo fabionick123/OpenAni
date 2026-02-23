@@ -201,7 +201,15 @@ public class AccountView extends AppCompatActivity {
                 } else {
                     try {
                         JSONObject errores = new JSONObject(response.errorBody().string());
-                        Log.d("Errores", errores.toString());
+                        if (errores.has("password")) {
+                            contrasena.setError(errores.getJSONArray("password").getString(0));
+                        }
+                        if (errores.has("email")) {
+                            correo.setError(errores.getJSONArray("email").getString(0));
+                        }
+                        if (errores.has("username")) {
+                            nombreUsuario.setError(errores.getJSONArray("username").getString(0));
+                        }
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     } catch (IOException e) {

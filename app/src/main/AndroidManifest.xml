@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Ventanas.RecuperarContrasenaActivity"
+            android:name=".Ventanas.RecuperarContrasenaView"
             android:exported="false" />
 
         <uses-library
