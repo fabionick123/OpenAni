@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.API_Manager.DataModel;
 import com.astememe.openani.Django_Manager.Interfaces.DjangoClient;
+import com.astememe.openani.Django_Manager.Models.ComentarioModel;
 import com.astememe.openani.Django_Manager.Models.FavoriteModel;
 import com.astememe.openani.Django_Manager.Models.TorrentsModel;
 import com.astememe.openani.R;
@@ -38,6 +39,7 @@ public class TorrentAdapter extends RecyclerView.Adapter<TorrentAdapter.SostenDe
 
     Context context;
     List<DataModel.Torrent> torrentList;
+    List<ComentarioModel> commentList;
     SharedPreferences preferences;
     String token;
     private List<String> listaFavoritos = new ArrayList<>();

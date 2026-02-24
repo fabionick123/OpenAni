@@ -22,13 +22,14 @@ import java.util.List;
 import io.woong.shapedimageview.CircleImageView;
 
 public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.SostenDeVistas_C>{
-    List<ComentarioModel> comentarios;
+    List<ComentarioModel.ComentarioTorrent> comentarios;
     SharedPreferences preferences;
 
     Context context;
 
-    public ComentarioAdapter(Context context){
+    public ComentarioAdapter(Context context, List<ComentarioModel.ComentarioTorrent> comentarios) {
         this.context = context;
+        this.comentarios = comentarios;
     }
 
     @NonNull
@@ -40,8 +41,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.So
 
     @Override
     public void onBindViewHolder(@NonNull SostenDeVistas_C holder, int position) {
-        ComentarioModel comentarioModel = comentarios.get(position);
-//        CircleImageView img_perfil = comentarios.get(position);
+        ComentarioModel.ComentarioTorrent comentarioModel = comentarios.get(position);
         Uri uri = Uri.parse("android.resource://" + context.getPackageName() + "/drawable/foto_de_perfil_" + preferences.getString("imagen", ""));
 
 
@@ -62,6 +62,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.So
 
         public SostenDeVistas_C(@NonNull View itemView){
             super(itemView);
+
             nombre_usuario_comentario = itemView.findViewById(R.id.nombre_usuario);
             img_perfil = itemView.findViewById(R.id.img_perfil);
             comentario_texto = itemView.findViewById(R.id.comentario_texto);
