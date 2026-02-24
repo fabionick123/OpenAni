@@ -77,7 +77,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_marginTop="4dp"
-                                android:src="@drawable/estrella_favorita_icono"
+                                android:src="@drawable/estrella_favorito_icono"
                                 app:tint="@color/amarillo_favorito"
                                 />
                         </LinearLayout>
